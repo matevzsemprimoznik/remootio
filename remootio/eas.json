@@ -9,6 +9,10 @@
       "distribution": "internal",
       "channel": "development"
     },
+    "test": {
+      "distribution": "internal",
+      "channel": "test"
+    },
     "preview": {
       "distribution": "internal",
       "channel": "preview"

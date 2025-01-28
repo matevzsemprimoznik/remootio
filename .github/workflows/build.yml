@@ -1,0 +1,76 @@
+name: Build App
+on:
+  workflow_dispatch:
+    inputs:
+      os:
+        type: choice
+        description: OS to build on. Ubuntu is faster, MacOS supports iOS builds, Windows is unsupported
+        options:
+          - macos-latest
+          - ubuntu-latest
+      platform:
+        type: choice
+        description: Platform to build for
+        options:
+          - android
+          - ios
+      profile:
+        type: choice
+        description: Build profile to use
+        options:
+          - development
+          - preview
+          - production
+
+jobs:
+  build:
+    runs-on: ${{ github.event.inputs.os }}
+    defaults:
+      run:
+        working-directory: remootio  # Set the working directory for all steps in the job
+
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v4
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: 🏗 Setup Java 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: 🏗 Setup Expo and EAS
+        uses: expo/expo-github-action@v8
+        with:
+          token: ${{ secrets.EXPO_TOKEN }}
+          expo-version: latest
+          eas-version: latest
+
+      - name: 🏗 Setup EAS local builds
+        run: npm i -g eas-cli-local-build-plugin
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🛠 Set up environment variables
+        run: |
+          echo "EXPO_PUBLIC_ACTION_API_URL=${{ secrets.EXPO_PUBLIC_ACTION_API_URL }}" >> $GITHUB_ENV
+
+      - name: 👷 Build app
+        run: |
+          eas build --local \
+            --non-interactive \
+            --output=./app-build \
+            --platform=${{ github.event.inputs.platform }} \
+            --profile=${{ github.event.inputs.profile }}
+
+      - name: 📱 Upload binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-${{ github.event.inputs.platform }}
+          path: app-build

@@ -27,7 +27,7 @@ export default function Home() {
                     <CustomText className="text-center text-lg">Open / Close Gates</CustomText>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => sendAction(Action.KEEP_OPENED)} className="m-2 bg-[#7ae582]  h-52 flex justify-center items-center rounded-2xl">
+                <TouchableOpacity onPress={() => sendAction(Action.KEEP_OPENED)} className="m-2 bg-[#ef233c]  h-52 flex justify-center items-center rounded-2xl">
                     <CustomText className="text-center text-black text-lg">Keep Gates Opened</CustomText>
                 </TouchableOpacity>
             </View>
