@@ -69,6 +69,8 @@ jobs:
             --platform=${{ github.event.inputs.platform }} \
             --profile=${{ github.event.inputs.profile }}
 
+      - name: 📂 List files
+        run: ls -laR
 
       - name: 📱 Upload binary
         uses: actions/upload-artifact@v4
