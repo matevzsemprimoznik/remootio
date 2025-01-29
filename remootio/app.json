@@ -43,7 +43,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "f1a3ec6a-cf84-4e1b-bebf-624cfe39755e"
+        "projectId": "0a90b9d1-6389-4c50-a235-9be9cd1b7897"
       }
     },
     "owner": "matevz_01",
@@ -51,7 +51,7 @@
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/f1a3ec6a-cf84-4e1b-bebf-624cfe39755e"
+      "url": "https://u.expo.dev/0a90b9d1-6389-4c50-a235-9be9cd1b7897"
     }
   }
 }
