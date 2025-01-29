@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -22,6 +23,8 @@ import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.techcube.remootio.services.Repositories
 import com.techcube.remootio.services.actions.ActionsRepositoryImpl
+import com.techcube.remootio.ui.components.MainViewModel
+import com.tomerpacific.jetpackcomposetabs.ui.view.TabLayout
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -38,6 +41,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        val viewModel: MainViewModel by viewModels()
+
         setContent {
             RemootioTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -47,8 +52,7 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
-                        HomeScreen()
-                    }
+                        TabLayout(viewModel = viewModel)                    }
                 }
             }
         }

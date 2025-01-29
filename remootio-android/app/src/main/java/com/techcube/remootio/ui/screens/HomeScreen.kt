@@ -9,14 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.techcube.remootio.R
 import com.techcube.remootio.models.Action
 import com.techcube.remootio.services.Repositories
-import com.techcube.remootio.services.actions.ActionsRepository
-import com.techcube.remootio.services.actions.ActionsRepositoryImpl
 
 @Preview(showBackground = true)
 @Composable
@@ -30,13 +26,13 @@ fun HomeScreen() {
     ) {
         Text(
             text = "Remootio",
-            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier.fillMaxWidth().padding(bottom = 32.dp),
             textAlign = androidx.compose.ui.text.style.TextAlign.Center
         )
 
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().padding(bottom = 16.dp),
             verticalArrangement = Arrangement.spacedBy(32.dp, Alignment.Top)
         ) {
             ActionButton(
