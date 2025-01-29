@@ -69,8 +69,6 @@ jobs:
             --platform=${{ github.event.inputs.platform }} \
             --profile=${{ github.event.inputs.profile }}
 
-      - name: 🔎 List Artifacts Directory
-        run: ls -l ./remootio/app-build
 
       - name: 📱 Upload binary
         uses: actions/upload-artifact@v4
@@ -78,14 +76,14 @@ jobs:
           name: app-build-${{ github.event.inputs.platform }}-${{ github.event.inputs.profile }}
           path: remootio/app-build/
 
-      - name: 📱 Upload binary 2
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-build-2
-          path: /home/runner/work/remootio/remootio/remootio/app-build/
-
-      - name: 📱 Upload binary 3
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-build-3
-          path: remootio/remootio/remootio/app-build/
+#      - name: 📱 Upload binary 2
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: app-build-2
+#          path: /home/runner/work/remootio/remootio/remootio/app-build/
+#
+#      - name: 📱 Upload binary 3
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: app-build-3
+#          path: remootio/remootio/remootio/app-build/
