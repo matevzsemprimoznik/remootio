@@ -22,7 +22,7 @@ class ActionsRepositoryImpl : ActionsRepository {
     override fun sendAction(action: Action) {
         val client = OkHttpClient()
 
-        val requestBody = Gson().toJson(ActionRequest(Action.OPEN))
+        val requestBody = Gson().toJson(ActionRequest(action))
 
         val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
         val body = requestBody.toRequestBody(mediaType)
