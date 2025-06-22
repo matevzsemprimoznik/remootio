@@ -61,7 +61,7 @@ fun HomeScreen() {
                         )
                     )
                 },
-                color = Color(0xFF1DD3B0),
+                color = Color(0xFFFF9800),
                 modifier = Modifier.weight(1f)
             )
         }

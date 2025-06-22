@@ -20,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.ripple.LocalRippleTheme
 import com.techcube.remootio.ui.components.MainViewModel
 import com.techcube.remootio.ui.screens.SettingsScreen
 import androidx.compose.runtime.Composable
@@ -30,11 +29,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import com.techcube.remootio.R
-
+import com.techcube.remootio.utils.UpdateChecker
 
 @Composable
 fun TabLayout(viewModel: MainViewModel) {
     val tabIndex = viewModel.tabIndex.observeAsState()
+
     Column(modifier = Modifier.fillMaxWidth()) {
         Box(modifier = Modifier.weight(1f)) {
             when (tabIndex.value) {
@@ -89,4 +89,6 @@ fun TabLayout(viewModel: MainViewModel) {
             }
         }
     }
+
+    UpdateChecker()
 }

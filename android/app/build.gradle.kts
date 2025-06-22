@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,18 +7,23 @@ plugins {
     alias(libs.plugins.google.services)
 }
 
+val versionMetadataUri: String = gradleLocalProperties(rootDir, providers).getProperty("version_metadata_uri")
+
+
 android {
     namespace = "com.techcube.remootio"
     compileSdk = 35
 
     defaultConfig {
         applicationId = "com.techcube.remootio"
-        minSdk = 29
+        minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 3
+        versionName = "1.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "VERSION_METADATA_URI", "\"$versionMetadataUri\"")
     }
 
     buildTypes {
@@ -37,6 +44,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -60,5 +68,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.database)
+    implementation(libs.okhttp)
 
 }
